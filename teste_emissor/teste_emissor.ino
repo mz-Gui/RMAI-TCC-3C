@@ -39,8 +39,8 @@ RH_ASK driver; //CRIA O DRIVER PARA COMUNICAÇÃO
 void setup(){
     driver.init(); 
     Serial.begin(9600);
-
 }
+
 void loop(){
     xValue = analogRead(VRX_PIN);
     yValue = analogRead(VRY_PIN);

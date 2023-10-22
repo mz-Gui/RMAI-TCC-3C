@@ -14,10 +14,10 @@ APROVEITE O CÓDIGO ;)
 #include <SPI.h> //INCLUSÃO DE BIBLIOTECA
 
 //Definição da pinagem usada
-#define PIN_RED 6
-#define PIN_YELLOW 7
-#define PIN_BLUE 8
-#define PIN_GREEN 9
+#define OUT1 6
+#define OUT2 7
+#define OUT3 8
+#define OUT4 9
 
 RH_ASK driver; //CRIA O DRIVER PARA COMUNICAÇ
 String str = ""; //VARIÁVEL DO TIPO STRING
@@ -42,38 +42,38 @@ void loop(){
      Serial.println(str);
       if(str.equals("COMMANDR")) 
         {
-        digitalWrite(PIN_YELLOW, HIGH);
-        digitalWrite(PIN_RED, LOW);
-        digitalWrite(PIN_BLUE, LOW);
-        digitalWrite(PIN_GREEN, LOW);
+        digitalWrite(OUT1, HIGH);
+        digitalWrite(OUT2, LOW);
+        digitalWrite(OUT3, LOW);
+        digitalWrite(OUT4, HIGH);
      }
       
       if(str.equals("COMMANDU")){
-        digitalWrite(PIN_YELLOW, LOW);
-        digitalWrite(PIN_RED, LOW);
-        digitalWrite(PIN_BLUE, HIGH);
-        digitalWrite(PIN_GREEN, LOW);
+        digitalWrite(OUT1, HIGH);
+        digitalWrite(OUT2, LOW);
+        digitalWrite(OUT3, HIGH);
+        digitalWrite(OUT4, LOW);
      }
       
        if(str.equals("COMMANDL")){
-        digitalWrite(PIN_YELLOW, LOW);
-        digitalWrite(PIN_RED, LOW);
-        digitalWrite(PIN_BLUE, LOW);
-        digitalWrite(PIN_GREEN, HIGH);
+        digitalWrite(OUT1, LOW);
+        digitalWrite(OUT2, HIGH);
+        digitalWrite(OUT3, HIGH);
+        digitalWrite(OUT4, LOW);
     
       }
        if(str.equals("COMMANDD")){
-        digitalWrite(PIN_YELLOW, LOW);
-        digitalWrite(PIN_RED, HIGH);
-        digitalWrite(PIN_BLUE, LOW);
-        digitalWrite(PIN_GREEN, LOW);
+        digitalWrite(OUT1, LOW);
+        digitalWrite(OUT2, HIGH);
+        digitalWrite(OUT3, LOW);
+        digitalWrite(OUT4, HIGH);
      }
 
      else {
-      digitalWrite(PIN_YELLOW, LOW);
-        digitalWrite(PIN_RED, LOW);
-        digitalWrite(PIN_BLUE, LOW);
-        digitalWrite(PIN_GREEN, LOW);
+      digitalWrite(OUT1, LOW);
+        digitalWrite(OUT2, LOW);
+        digitalWrite(OUT3, LOW);
+        digitalWrite(OUT4, LOW);
       }
 
       }
