@@ -14,10 +14,19 @@ APROVEITE O CÓDIGO ;)
 #include <SPI.h> //INCLUSÃO DE BIBLIOTECA
 
 //Definição da pinagem usada
-#define OUT1 6
-#define OUT2 7
-#define OUT3 8
-#define OUT4 9
+#define INT_1 4
+#define INT_2 3
+#define INT_3 2
+#define INT_4 1
+//Definição da pinagem usada passo
+#define IN_1 5
+#define IN_2 6
+#define IN_3 7
+#define IN_4 8
+#define IN_5 13
+#define IN_6 12
+#define IN_7 10
+#define IN_8 9
 
 RH_ASK driver; //CRIA O DRIVER PARA COMUNICAÇ
 String str = ""; //VARIÁVEL DO TIPO STRING
@@ -40,41 +49,132 @@ void loop(){
       Serial.println(str);
      }  
      Serial.println(str);
-      if(str.equals("COMMANDR")) 
+      if(str.equals("R")) 
         {
-        digitalWrite(OUT1, HIGH);
-        digitalWrite(OUT2, LOW);
-        digitalWrite(OUT3, LOW);
-        digitalWrite(OUT4, HIGH);
+        digitalWrite(INT_1, HIGH);
+        digitalWrite(INT_2, LOW);
+        digitalWrite(INT_3, LOW);
+        digitalWrite(INT_4, HIGH);
      }
       
-      if(str.equals("COMMANDU")){
-        digitalWrite(OUT1, HIGH);
-        digitalWrite(OUT2, LOW);
-        digitalWrite(OUT3, HIGH);
-        digitalWrite(OUT4, LOW);
+      if(str.equals("U")){
+        digitalWrite(INT_1, HIGH);
+        digitalWrite(INT_2, LOW);
+        digitalWrite(INT_3, HIGH);
+        digitalWrite(INT_4, LOW);
      }
       
-       if(str.equals("COMMANDL")){
-        digitalWrite(OUT1, LOW);
-        digitalWrite(OUT2, HIGH);
-        digitalWrite(OUT3, HIGH);
-        digitalWrite(OUT4, LOW);
+       if(str.equals("L")){
+        digitalWrite(INT_1, LOW);
+        digitalWrite(INT_2, HIGH);
+        digitalWrite(INT_3, HIGH);
+        digitalWrite(INT_4, LOW);
     
       }
-       if(str.equals("COMMANDD")){
-        digitalWrite(OUT1, LOW);
-        digitalWrite(OUT2, HIGH);
-        digitalWrite(OUT3, LOW);
-        digitalWrite(OUT4, HIGH);
+       if(str.equals("D")){
+        digitalWrite(INT_1, LOW);
+        digitalWrite(INT_2, HIGH);
+        digitalWrite(INT_3, LOW);
+        digitalWrite(INT_4, HIGH);
+    
      }
 
      else {
-      digitalWrite(OUT1, LOW);
-        digitalWrite(OUT2, LOW);
-        digitalWrite(OUT3, LOW);
-        digitalWrite(OUT4, LOW);
+      digitalWrite(INT_1, LOW);
+      digitalWrite(INT_2, LOW);
+      digitalWrite(INT_3, LOW);
+      digitalWrite(INT_4, LOW);
       }
+      while(str.equals("E")) 
+        {
+        digitalWrite(IN_1, HIGH);
+        digitalWrite(IN_2, LOW);
+        digitalWrite(IN_3, LOW);
+        digitalWrite(IN_4, LOW);
+        delay(50);
+        digitalWrite(IN_1, LOW);
+        digitalWrite(IN_2, HIGH);
+        digitalWrite(IN_3, LOW);
+        digitalWrite(IN_4, LOW);
+        delay(50);
+        digitalWrite(IN_1, LOW);
+        digitalWrite(IN_2, LOW);
+        digitalWrite(IN_3, HIGH);
+        digitalWrite(IN_4, LOW);
+        delay(50);
+        digitalWrite(IN_1, LOW);
+        digitalWrite(IN_2, LOW);
+        digitalWrite(IN_3, LOW);
+        digitalWrite(IN_4, HIGH);
+     }
+      
+      while(str.equals("H")) 
+        {
+        digitalWrite(IN_1, LOW);
+        digitalWrite(IN_2, LOW);
+        digitalWrite(IN_3, LOW);
+        digitalWrite(IN_4, HIGH);
+        delay(50);
+        digitalWrite(IN_1, LOW);
+        digitalWrite(IN_2, LOW);
+        digitalWrite(IN_3, HIGH);
+        digitalWrite(IN_4, LOW);
+        delay(50);
+        digitalWrite(IN_1, LOW);
+        digitalWrite(IN_2, HIGH);
+        digitalWrite(IN_3, LOW);
+        digitalWrite(IN_4, LOW);
+        delay(50);
+        digitalWrite(IN_1, HIGH);
+        digitalWrite(IN_2, LOW);
+        digitalWrite(IN_3, LOW);
+        digitalWrite(IN_4, LOW);
+     }
+      
+       while(str.equals("C")) 
+        {
+        digitalWrite(IN_5, HIGH);
+        digitalWrite(IN_6, LOW);
+        digitalWrite(IN_7, LOW);
+        digitalWrite(IN_8, LOW);
+        delay(50);
+        digitalWrite(IN_5, LOW);
+        digitalWrite(IN_6, HIGH);
+        digitalWrite(IN_7, LOW);
+        digitalWrite(IN_8, LOW);
+        delay(50);
+        digitalWrite(IN_5, LOW);
+        digitalWrite(IN_6, LOW);
+        digitalWrite(IN_7, HIGH);
+        digitalWrite(IN_8, LOW);
+        delay(50);
+        digitalWrite(IN_5, LOW);
+        digitalWrite(IN_6, LOW);
+        digitalWrite(IN_7, LOW);
+        digitalWrite(IN_8, HIGH);
+     }
+       while(str.equals("B")) 
+        {
+        digitalWrite(IN_1, LOW);
+        digitalWrite(IN_2, LOW);
+        digitalWrite(IN_3, LOW);
+        digitalWrite(IN_4, HIGH);
+        delay(50);
+        digitalWrite(IN_1, LOW);
+        digitalWrite(IN_2, LOW);
+        digitalWrite(IN_3, HIGH);
+        digitalWrite(IN_4, LOW);
+        delay(50);
+        digitalWrite(IN_1, LOW);
+        digitalWrite(IN_2, HIGH);
+        digitalWrite(IN_3, LOW);
+        digitalWrite(IN_4, LOW);
+        delay(50);
+        digitalWrite(IN_1, HIGH);
+        digitalWrite(IN_2, LOW);
+        digitalWrite(IN_3, LOW);
+        digitalWrite(IN_4, LOW);
+     }
 
       }
         }
