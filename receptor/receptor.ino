@@ -13,7 +13,7 @@ APROVEITE O CÓDIGO ;)
 */
 
 //Inclusão de bibliotecas
-#include <Stepper.h>
+#include <Servo.h>
 #include <esp_now.h>
 #include <WiFi.h>
 
@@ -23,10 +23,8 @@ APROVEITE O CÓDIGO ;)
 #define IN3 26
 #define IN4 27
 
-#define SV1 19
-#define SV2 18
-#define SV3 5
-#define SV4 17
+#define SV1 16
+#define SV2 17
 
 //Estrutura para o recebimento das mensagens
 typedef struct struct_message
@@ -39,7 +37,12 @@ typedef struct struct_message
 struct_message comando;
 
 //Declaração do servo motor
-Stepper myStepper(1024, SV1, SV3, SV2, SV4);
+Servo servo1;
+Servo servo2;
+
+//Variável de posição dos servos
+int horz;
+int vert;
 
 //Inicializar o protocolo de comunicação espNow
 void InitESPNow() {
@@ -68,6 +71,9 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len){
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, LOW);
+
+  horz = 90;
+  vert = 90;
 
   if(direcao == "direita") {
     digitalWrite(IN1, HIGH);
@@ -99,11 +105,23 @@ void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len){
 
 //Rotina de controle da rotação
   if(rotacao == "esquerda"){
-    myStepper.step(4);
+    horz = horz + 2;
+    servo1.write(horz);
     }
 
   if(rotacao == "direita"){
-    myStepper.step(-4);
+    horz = horz - 2;
+    servo1.write(horz);
+    }
+
+    if(rotacao == "frente"){
+    vert = vert + 2;
+    servo2.write(vert);
+    }
+
+  if(rotacao == "tras"){
+    vert = vert - 2;
+    servo2.write(vert);
     }
 }
 
@@ -115,11 +133,12 @@ void setup(){
   pinMode(IN3, OUTPUT);
   pinMode(IN4, OUTPUT);
 
+  servo1.attach(SV1);
+  servo2.attach(SV2);
+
   WiFi.mode(WIFI_STA);
 
   InitESPNow();
-
-  myStepper.setSpeed(24);
 
   esp_now_register_recv_cb(OnDataRecv);
 }
